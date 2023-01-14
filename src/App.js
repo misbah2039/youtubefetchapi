@@ -1,25 +1,27 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useEffect, useState } from "react";
+import { fetchApi } from "./utils/fetchApi";
+import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
+import "./index.css";
+import Card from "./Card";
 
-function App() {
+const App = () => {
+  const [channelId, setChannelId] = useState("UCBwmMxybNva6P_5VmxjzwqA");
+  const [finalData, setFinalData] = useState([]);
+  const getData = async () => {
+    const response = await fetchApi(channelId);
+    setFinalData(response.items);
+    console.log(finalData);
+  };
+  useEffect(() => {
+    getData();
+  }, [channelId]);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Card
+      finalData={finalData}
+      channelId={channelId}
+      setChannelId={setChannelId}
+    />
   );
-}
+};
 
 export default App;
