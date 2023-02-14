@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { fetchApi } from "./utils/fetchApi";
 import "../node_modules/bootstrap/dist/css/bootstrap.min.css";
 import "./index.css";
-import Card from "./Card";
+import Card from "./Card"
 
 const App = () => {
   const [channelId, setChannelId] = useState("UCBwmMxybNva6P_5VmxjzwqA");
